@@ -8,7 +8,7 @@
 #include <vector>
 #include <algorithm>
 
-#include <allegro.h>
+ #include <allegro.h>
 
 namespace grman
 {
@@ -599,15 +599,19 @@ protected :
 
 
 public :
-
+    void vertex_cliqued(bool vertex);
     virtual void interact_focus();
     virtual bool captures_focus()
     {
         return true;
     }
-    void set_moveable(bool moveable=true)
+    void set_moveable(bool moveable = true)
     {
         m_moveable = moveable;
+    }
+    void set_contained(bool contained = true)
+    {
+        m_contained = contained;
     }
 };
 

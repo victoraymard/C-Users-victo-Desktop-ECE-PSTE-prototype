@@ -38,14 +38,6 @@
 			<Add library="jpgalleg" />
 			<Add library="alleg44.dll" />
 		</Linker>
-		<Unit filename="Animal.cpp" />
-		<Unit filename="Animal.h" />
-		<Unit filename="Espece.cpp" />
-		<Unit filename="Espece.h" />
-		<Unit filename="Reservoir.cpp" />
-		<Unit filename="Reservoir.h" />
-		<Unit filename="Vegetal.cpp" />
-		<Unit filename="Vegetal.h" />
 		<Unit filename="graph.cpp" />
 		<Unit filename="graph.h" />
 		<Unit filename="grman/coords.cpp" />

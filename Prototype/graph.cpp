@@ -1,13 +1,11 @@
 #include "graph.h"
-#include"Animal.h"
-#include"Reservoir.h"
-#include"Vegetal.h"
 #include <sstream>
 #include <fstream>
 #include<stack>
 #include<queue>
 #include <set>
 #include<algorithm>
+
 namespace patch
 {
 template < typename T > std::string to_string( const T& n )
@@ -31,8 +29,11 @@ VertexInterface::VertexInterface(int idx, int x, int y)
 
     // La boite englobante
     m_top_box.set_pos(x, y);
-    m_top_box.set_dim(14,14);
-    m_top_box.set_moveable();
+    m_top_box.set_dim(11,11);
+    //m_top_box.set_moveable();
+    m_top_box.set_contained();
+
+
 
    /* // Le slider de réglage de valeur
     m_top_box.add_child( m_slider_value );
@@ -55,10 +56,11 @@ VertexInterface::VertexInterface(int idx, int x, int y)
 
     // Label de visualisation d'index du sommet dans une boite
     m_top_box.add_child( m_box_label_idx );
-    m_box_label_idx.set_dim(14,14);
-    m_box_label_idx.set_gravity_x(grman::GravityX::Right);
+    m_box_label_idx.set_dim(12,12);
+    m_box_label_idx.set_no_gravity();
     //m_box_label_idx.set_posy(70);
-    m_box_label_idx.set_bg_color(BLANC);
+    m_box_label_idx.set_bg_color(BLEUCLAIR);
+
 
     m_box_label_idx.add_child( m_label_idx );
     m_label_idx.set_message( patch::to_string(idx) );
@@ -96,6 +98,12 @@ void Vertex::setarc_sortant(int numero_de_larc)
 /// Gestion du Vertex avant l'appel à l'interface
 void Vertex::pre_update()
 {
+    if(mouse_b)
+    {
+        std::cout<<"afficher les caracteristiques\n";
+        mouse_b = false;
+    }
+
     if (!m_interface)
         return;
 
@@ -116,10 +124,10 @@ void Vertex::post_update(int *x, int *y,bool *z)
     /// Reprendre la valeur du slider dans la donnée m_value locale
     m_value = m_interface->m_slider_value.get_value();
 
-    if (m_interface->m_bouton1.clicked())
+   /* if (m_interface->m_bouton1.clicked())
     {
         *x = m_interface->getidx();
-    }
+    }*/
 }
 int VertexInterface::getidx()
 {
@@ -197,7 +205,6 @@ GraphInterface::GraphInterface(int x, int y, int w, int h, std::string nom)
 {
     m_top_box.set_dim(1000,740);
     m_top_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
-    std::cout<<"\ngraphe internface\n";
 
   /*  m_top_box.add_child(m_tool_box);
     m_tool_box.set_dim(80,720);
@@ -286,7 +293,6 @@ void Graph::recuperation(std::string nom1, std::string nom2)
 
     if(fichier)
     {
-        std::cout<<"fichier";
         int v1 = 0;
         unsigned int idx, x,y;
 

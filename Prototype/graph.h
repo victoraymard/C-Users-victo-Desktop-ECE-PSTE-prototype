@@ -116,11 +116,11 @@ private :
     // Une boite pour le label précédent
     grman::WidgetText m_box_label_idx;
 
-    grman::WidgetText m_msg;
-    grman::WidgetButton m_bouton1;
+   // grman::WidgetText m_msg;
+ //   grman::WidgetButton m_bouton1;
 
-    grman::WidgetBox m_nom_animal;
-    grman::WidgetText m_nom_animal_label;
+   // grman::WidgetBox m_nom_animal;
+   // grman::WidgetText m_nom_animal_label;
 
 
 

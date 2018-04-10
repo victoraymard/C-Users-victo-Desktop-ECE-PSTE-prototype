@@ -301,6 +301,15 @@ void WidgetImage::draw()
 /***************************************************
                     BOX
 ****************************************************/
+void WidgetBox::vertex_cliqued(bool vertex)
+{
+    if (mouse_click && vertex)
+    {
+        m_pos_start_move = m_frame.pos;
+        std::cout << "zépo";
+    }
+}
+
 
 void WidgetBox::interact_focus()
 {
@@ -308,6 +317,7 @@ void WidgetBox::interact_focus()
     {
         m_pos_start_move = m_frame.pos;
     }
+
 
     if (m_moveable)
     {
