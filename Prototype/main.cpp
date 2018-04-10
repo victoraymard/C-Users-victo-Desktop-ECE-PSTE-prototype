@@ -80,7 +80,9 @@ void menu()
             if( secu == false)
             {
                 secu = true;
+                std::cout<<"zepo";
                 g.recuperation(nom1,nom4);
+                std::cout<<"de ouf";
             }
             while (x == true)
             {

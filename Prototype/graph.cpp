@@ -197,15 +197,16 @@ GraphInterface::GraphInterface(int x, int y, int w, int h, std::string nom)
 {
     m_top_box.set_dim(1000,740);
     m_top_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
+    std::cout<<"\ngraphe internface\n";
 
   /*  m_top_box.add_child(m_tool_box);
     m_tool_box.set_dim(80,720);
     m_tool_box.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
-    m_tool_box.set_bg_color(ROUGE);
+    m_tool_box.set_bg_color(ROUGE);*/
 
-    m_top_box.add_child(m_main_box);
+   m_top_box.add_child(m_main_box);
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
-    m_main_box.set_pic_name(nom);
+    m_main_box.set_pic_name(nom); /*
 
     ///boite à boutons
     m_tool_box.add_child(m_boite_boutons);
@@ -285,6 +286,7 @@ void Graph::recuperation(std::string nom1, std::string nom2)
 
     if(fichier)
     {
+        std::cout<<"fichier";
         int v1 = 0;
         unsigned int idx, x,y;
 
