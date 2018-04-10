@@ -1,0 +1,26 @@
+10
+14
+0 3059 18 28 baleine baleine.bmp
+1 79803 498 28 orque orque.bmp
+2 3.9677e+007 448 348 phoque phoque.bmp
+3 381858 698 218 leopard_des_mers leopard_des_mers.bmp
+4 4.70336e+006 248 198 manchot_adelie manchot_adelie.bmp
+5 1e+008 748 478 calmar calmar.bmp
+6 6.5e+007 18 348 krill krill.bmp
+7 2 198 478 zooplancton_carnivore zooplancton_carnivore.bmp
+8 999997 498 598 zooplancton_herbivore zooplancton_herbivore.bmp
+9 9.99512e+008 18 598 phytoplancton phytoplancton.bmp
+0 0 6 50
+1 2 6 50
+2 4 6 75
+3 3 6 25
+4 5 6 25
+5 6 9 25
+6 8 9 0
+7 5 8 100
+8 3 5 20
+9 1 3 80
+10 3 2 80
+11 3 4 80
+12 7 8 80
+13 6 7 80

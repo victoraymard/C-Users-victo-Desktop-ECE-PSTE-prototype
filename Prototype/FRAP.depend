@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1523051792 source:c:\users\victo\desktop\ece\pste\pste\animal.cpp
+	"Animal.h"
+
+1523051792 c:\users\victo\desktop\ece\pste\pste\animal.h
+	"Espece.h"
+
+1523208847 c:\users\victo\desktop\ece\pste\pste\espece.h
+	<string>
+	"graph.h"
+
+1523372011 c:\users\victo\desktop\ece\pste\pste\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523051793 c:\users\victo\desktop\ece\pste\pste\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523051793 c:\users\victo\desktop\ece\pste\pste\grman\grman_couleurs.h
+
+1523208848 c:\users\victo\desktop\ece\pste\pste\grman\coords.h
+	<cmath>
+
+1523208848 c:\users\victo\desktop\ece\pste\pste\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523208847 source:c:\users\victo\desktop\ece\pste\pste\espece.cpp
+	"Espece.h"
+
+1523373622 source:c:\users\victo\desktop\ece\pste\pste\graph.cpp
+	"graph.h"
+	"Animal.h"
+	"Reservoir.h"
+	"Vegetal.h"
+	<sstream>
+	<fstream>
+	<stack>
+	<queue>
+	<set>
+	<algorithm>
+
+1523208847 c:\users\victo\desktop\ece\pste\pste\reservoir.h
+	"graph.h"
+
+1523051792 c:\users\victo\desktop\ece\pste\pste\vegetal.h
+	"Espece.h"
+
+1523051793 source:c:\users\victo\desktop\ece\pste\pste\grman\coords.cpp
+	"coords.h"
+
+1523208848 source:c:\users\victo\desktop\ece\pste\pste\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523208848 source:c:\users\victo\desktop\ece\pste\pste\grman\widget.cpp
+	"widget.h"
+
+1523208847 source:c:\users\victo\desktop\ece\pste\pste\reservoir.cpp
+	"Reservoir.h"
+
+1523051792 source:c:\users\victo\desktop\ece\pste\pste\vegetal.cpp
+	"Vegetal.h"
+
+1523373919 source:c:\users\victo\desktop\ece\pste\pste\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
