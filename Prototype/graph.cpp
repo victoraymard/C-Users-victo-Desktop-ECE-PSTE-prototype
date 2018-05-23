@@ -6,6 +6,7 @@
 #include <set>
 #include<algorithm>
 
+
 namespace patch
 {
 template < typename T > std::string to_string( const T& n )
@@ -35,24 +36,24 @@ VertexInterface::VertexInterface(int idx, int x, int y)
 
 
 
-   /* // Le slider de réglage de valeur
-    m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(mini, maxi);  // Valeurs arbitraires, à adapter...
-    m_slider_value.set_dim(20,80);
-    m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);*/
+    /* // Le slider de réglage de valeur
+     m_top_box.add_child( m_slider_value );
+     m_slider_value.set_range(mini, maxi);  // Valeurs arbitraires, à adapter...
+     m_slider_value.set_dim(20,80);
+     m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);*/
 
     /*// Label de visualisation de valeur
     m_top_box.add_child( m_label_value );
     m_label_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Down);*/
 
-   /* // Une illustration...
-    if (pic_name!="")
-    {
-        m_top_box.add_child( m_img );
-        m_img.set_pic_name(pic_name);
-        m_img.set_pic_idx(pic_idx);
-        m_img.set_gravity_x(grman::GravityX::Right);
-    }*/
+    /* // Une illustration...
+     if (pic_name!="")
+     {
+         m_top_box.add_child( m_img );
+         m_img.set_pic_name(pic_name);
+         m_img.set_pic_idx(pic_idx);
+         m_img.set_gravity_x(grman::GravityX::Right);
+     }*/
 
     // Label de visualisation d'index du sommet dans une boite
     m_top_box.add_child( m_box_label_idx );
@@ -65,21 +66,21 @@ VertexInterface::VertexInterface(int idx, int x, int y)
     m_box_label_idx.add_child( m_label_idx );
     m_label_idx.set_message( patch::to_string(idx) );
 
-   /* m_top_box.add_child(m_bouton1);
-    m_bouton1.set_dim(50,12);
-    m_bouton1.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Down);
-    m_bouton1.set_bg_color(ROUGECLAIR);*/
+    /* m_top_box.add_child(m_bouton1);
+     m_bouton1.set_dim(50,12);
+     m_bouton1.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Down);
+     m_bouton1.set_bg_color(ROUGECLAIR);*/
 
-   /* m_bouton1.add_child( m_msg );
-    m_msg.set_message("delete");*/
+    /* m_bouton1.add_child( m_msg );
+     m_msg.set_message("delete");*/
 
-   /* //nom animal
-    m_top_box.add_child(m_nom_animal);
-    m_nom_animal.set_frame(90,6, 0, 0 );
+    /* //nom animal
+     m_top_box.add_child(m_nom_animal);
+     m_nom_animal.set_frame(90,6, 0, 0 );
 
-    m_nom_animal.add_child(m_nom_animal_label);
-    m_nom_animal_label.set_message(thing_name);
-    m_nom_animal_label.set_color(MARRONSOMBRE);*/
+     m_nom_animal.add_child(m_nom_animal_label);
+     m_nom_animal_label.set_message(thing_name);
+     m_nom_animal_label.set_color(MARRONSOMBRE);*/
 
 
 
@@ -98,11 +99,15 @@ void Vertex::setarc_sortant(int numero_de_larc)
 /// Gestion du Vertex avant l'appel à l'interface
 void Vertex::pre_update()
 {
-    if(mouse_b)
+   if(mouse_b)
     {
-        std::cout<<"afficher les caracteristiques\n";
+        //std::cout<<"afficher les caracteristiques\n";
+
         mouse_b = false;
+
     }
+
+
 
     if (!m_interface)
         return;
@@ -124,10 +129,12 @@ void Vertex::post_update(int *x, int *y,bool *z)
     /// Reprendre la valeur du slider dans la donnée m_value locale
     m_value = m_interface->m_slider_value.get_value();
 
-   /* if (m_interface->m_bouton1.clicked())
-    {
-        *x = m_interface->getidx();
-    }*/
+
+
+  /*   if (m_interface->m_bouton1.clicked())
+     {
+         *x = m_interface->getidx();
+     }*/
 }
 int VertexInterface::getidx()
 {
@@ -206,12 +213,12 @@ GraphInterface::GraphInterface(int x, int y, int w, int h, std::string nom)
     m_top_box.set_dim(1000,740);
     m_top_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
 
-  /*  m_top_box.add_child(m_tool_box);
-    m_tool_box.set_dim(80,720);
-    m_tool_box.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
-    m_tool_box.set_bg_color(ROUGE);*/
+    /*  m_top_box.add_child(m_tool_box);
+      m_tool_box.set_dim(80,720);
+      m_tool_box.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
+      m_tool_box.set_bg_color(ROUGE);*/
 
-   m_top_box.add_child(m_main_box);
+    m_top_box.add_child(m_main_box);
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_pic_name(nom); /*
 
@@ -283,7 +290,8 @@ GraphInterface::GraphInterface(int x, int y, int w, int h, std::string nom)
 
 }
 
-void Graph::recuperation(std::string nom1, std::string nom2)
+
+void Graph::recuperation(std::string nom1, std::string nom2, std::vector<Vertex>& mainVertices)
 {
     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, nom2);
 
@@ -293,20 +301,32 @@ void Graph::recuperation(std::string nom1, std::string nom2)
 
     if(fichier)
     {
+
         int v1 = 0;
+        Vertex v;
         unsigned int idx, x,y;
 
         fichier >> v1;
         for(int i = 0 ; i < v1 ; i++)
+
         {
-            fichier >> idx;
-            fichier >> x;
-            fichier >>  y;
+            fichier >> idx >>x>>y;
+            //fichier >> x;
+           // fichier >>  y;
             add_interfaced_vertex(idx, x, y);
+            mainVertices.push_back(v);
+
+
+            mainVertices[i].posx=x;
+            mainVertices[i].posy=y;
+            mainVertices[i].idx=idx;
+
         }
     }
     else
         std::cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << std::endl;
+
+
 }
 
 
@@ -324,6 +344,15 @@ void Graph::update(std::string nom)
     if (!m_interface)
         return;
 
+/* for (auto it = m_vertices.begin(); it!=m_vertices.end(); ++it)
+   {
+        if(mouse_b)
+        {
+            std::cout<<"afficher les caracteristiques "<<m_vertices[it->first].getvalue()<<std::endl;
+            mouse_b = false;
+        }
+    }*/
+
     for (auto &elt : m_vertices)
         elt.second.pre_update();
 
@@ -337,12 +366,19 @@ void Graph::update(std::string nom)
     for (auto &elt : m_edges)
         elt.second.post_update();
 
-
     /// TOUCHES CLAVIER
     if (key[KEY_B])
     {
         sauvegarde(m_vertices,nom);
     }
+   /*    if (key[KEY_Q])
+    {
+          for (auto it = m_vertices.begin(); it!=m_vertices.end(); ++it)
+    {
+        m_vertices[it->first].setValue(it->first);
+    }
+    //key[KEY_Q]=false;
+    }*/
 
     /// BOUTONS
 
@@ -352,6 +388,33 @@ void Graph::update(std::string nom)
 
     delete z;
 
+
+
+
+       if(mouse_b&1 && 21 < mouse_x &&  mouse_x < 45 && 357< mouse_y && mouse_y < 378 )///graphe1
+        {
+            std::cout <<"je suis sur le sommet 1\n";
+        }
+        else if(mouse_b&1 && 46 < mouse_x &&  mouse_x < 69 && 517< mouse_y && mouse_y < 537 )///graphe1
+        {
+            std::cout <<"je suis sur le sommet 2\n";
+        }
+
+
+
+
+
+        for (auto &elt : m_vertices)
+        {
+           // if (MOUSE_CURSOR_ALLEGRO < m_vertices[it->first].pos_x )
+
+            //if (m_top_box)
+
+            /*
+            m_top_box.set_pos(x, y);
+            m_top_box.set_dim(11,11);
+            */
+        }
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -391,8 +454,29 @@ void Graph::sauvegarde(std::map<int, Vertex> m_vertices, std::string nom)
 
     fichier.close();
 }
+
+/*Graph::retourPositions()
+{
+
+    for(it = m_vertices.begin(); it != m_vertices.end(); it++)
+    {
+        if
+        m_vertices[it->first].m_interface->m_top_box.get_posx()
+        m_vertices[it->first].m_interface->m_top_box.get_posy()
+    }
+
+
+}*/
+
+
 void Graph::clear_map()
 {
     m_vertices.clear();
     m_edges.clear();
 }
+
+void Graph::credits()
+{
+     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, "credits.jpg");
+}
+
