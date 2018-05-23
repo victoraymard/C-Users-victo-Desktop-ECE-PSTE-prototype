@@ -105,6 +105,8 @@ public:
     int posx;
     int posy;
     int idx;
+    int numHydrant;
+    std::string infosHydrant;
 
 
     /// Les constructeurs sont à compléter selon vos besoin...

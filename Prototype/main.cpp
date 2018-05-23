@@ -116,16 +116,18 @@ void menu()
 
 
                 /// poteaux---------------------------------------------------------------------------------------------------------------------------------
-                // if(mouse_b&1 && 40< mouse_x &&  mouse_x < 65 && 361< mouse_y && mouse_y < 382 )///sommet 0
+
                 for (int i=0; i<mainVertices.size(); i++)
                 {
                    /// rectfill(screen,mainVertices[i].posx-COINX+2.5*ERREURPOS,mainVertices[i].posy-COINY+0.9*ERREURPOS,mainVertices[i].posx+COINX+2.6*ERREURPOS,mainVertices[i].posy+COINY+1*ERREURPOS, makecol(255, 0, 0));/// pour visualiser la position des sommets
-                     //std::cout <<"coucou\n";
+
                      //si on met mouse_b sans clique
                     if(mouse_b&1 && mainVertices[i].posx-COINX+2.5*ERREURPOS< mouse_x &&  mouse_x < mainVertices[i].posx+COINX+2.6*ERREURPOS && mainVertices[i].posy-COINY+0.9*ERREURPOS< mouse_y && mouse_y < mainVertices[i].posy+COINY+1*ERREURPOS && position == "space")///graphe200 +20x
                     //if(mouse_b&1 && 408< mouse_x &&  mouse_x < 428 && 602< mouse_y && mouse_y < 622 && position == "space")///graphe200 +20x
                     {
                         std::cout <<mainVertices[i].idx<<std::endl;
+                        std::cout <<mainVertices[i].numHydrant<<std::endl;
+                        std::cout <<mainVertices[i].infosHydrant<<std::endl;
                         //std::cout <<"poteau 200\n"; //diametre 250
                         //std::cout <<"diametre 200\n3 LGP\n7 LG\n7 LDV\n\n";
                     }

@@ -304,22 +304,24 @@ void Graph::recuperation(std::string nom1, std::string nom2, std::vector<Vertex>
 
         int v1 = 0;
         Vertex v;
-        unsigned int idx, x,y;
+        unsigned int idx, x,y, numHydrant;
+        std::string infosHydrant;
 
         fichier >> v1;
         for(int i = 0 ; i < v1 ; i++)
 
         {
-            fichier >> idx >>x>>y;
-            //fichier >> x;
-           // fichier >>  y;
+            fichier >> idx >>x>>y>>numHydrant>>infosHydrant;
             add_interfaced_vertex(idx, x, y);
-            mainVertices.push_back(v);
 
+            ///lien avec le main
+            mainVertices.push_back(v);
 
             mainVertices[i].posx=x;
             mainVertices[i].posy=y;
             mainVertices[i].idx=idx;
+            mainVertices[i].numHydrant=numHydrant;
+            mainVertices[i].infosHydrant=infosHydrant;
 
         }
     }
@@ -400,21 +402,6 @@ void Graph::update(std::string nom)
             std::cout <<"je suis sur le sommet 2\n";
         }
 
-
-
-
-
-        for (auto &elt : m_vertices)
-        {
-           // if (MOUSE_CURSOR_ALLEGRO < m_vertices[it->first].pos_x )
-
-            //if (m_top_box)
-
-            /*
-            m_top_box.set_pos(x, y);
-            m_top_box.set_dim(11,11);
-            */
-        }
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -455,19 +442,6 @@ void Graph::sauvegarde(std::map<int, Vertex> m_vertices, std::string nom)
     fichier.close();
 }
 
-/*Graph::retourPositions()
-{
-
-    for(it = m_vertices.begin(); it != m_vertices.end(); it++)
-    {
-        if
-        m_vertices[it->first].m_interface->m_top_box.get_posx()
-        m_vertices[it->first].m_interface->m_top_box.get_posy()
-    }
-
-
-}*/
-
 
 void Graph::clear_map()
 {
@@ -477,6 +451,6 @@ void Graph::clear_map()
 
 void Graph::credits()
 {
-     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, "credits.jpg");
+     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, "creditsbis.png");
 }
 
