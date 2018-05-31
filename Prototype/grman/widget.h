@@ -64,8 +64,8 @@ protected :
     int m_bg_color = -1;
 
     int m_border_color = GRISSOMBRE;
-    int m_border_color_over = VIOLETSOMBRE;
-    int m_border_color_focus = ORANGESOMBRE;
+    int m_border_color_over = ROSE;
+    int m_border_color_focus = VERTCLAIR;
 
     int m_border = 1;
     int m_margin = 1;

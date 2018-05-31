@@ -47,7 +47,10 @@ int main()
 void menu()
 {
     BITMAP* popup ;
-    popup = load_bitmap("popup.bmp", NULL);
+    popup = load_bitmap("popupbis.png", NULL);//pas dans le dossier pics
+
+     BITMAP* popuptest ;
+    popuptest = load_bitmap("popup.jpg", NULL);//pas dans le dossier pics
 
     std::vector<Vertex> mainVertices;
 
@@ -128,6 +131,24 @@ void menu()
                         std::cout <<mainVertices[i].idx<<std::endl;
                         std::cout <<mainVertices[i].numHydrant<<std::endl;
                         std::cout <<mainVertices[i].infosHydrant<<std::endl;
+
+                        /// surbrillance du sommet
+//                        m_box_label_idx.set_bg_color(ROUGE);
+
+                        /// cercles
+
+
+
+                        ///pop up
+
+                        //blit(fond, buffer, 0,0,0,0,1000, 750);
+                        blit(popuptest, buffer, 0,0,0,0,1000, 750); //ajout d'un sommet avec  une image
+                        blit(buffer, screen, 0,0,0,0,1000,750);
+
+                       // grman::mettre_a_jour();
+                        std::this_thread::sleep_for (std::chrono::seconds(2));//pensant 2 s
+
+
                         //std::cout <<"poteau 200\n"; //diametre 250
                         //std::cout <<"diametre 200\n3 LGP\n7 LG\n7 LDV\n\n";
                     }

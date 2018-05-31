@@ -33,6 +33,7 @@ VertexInterface::VertexInterface(int idx, int x, int y)
     m_top_box.set_dim(11,11);
     //m_top_box.set_moveable();
     m_top_box.set_contained();
+    m_top_box.set_bg_color(BLEUCLAIR);
 
 
 
