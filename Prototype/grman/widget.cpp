@@ -388,7 +388,7 @@ void WidgetEdge::draw()
 
         /// Cas Bullet
         if (itm.m_type == ArrowItemType::Bullet)
-            circlefill(page, head.x, head.y, itm.m_size/3, m_color);
+            circlefill(page, head.x, head.y, (itm.m_size/3)+4, m_color);
 
         /// Cas pointe de flèche ou triangle
         else

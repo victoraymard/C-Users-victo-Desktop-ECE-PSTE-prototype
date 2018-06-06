@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 
+
 #include "grman/grman.h"
 
 /***************************************************
@@ -18,9 +19,10 @@ class VertexInterface
     friend class Vertex;
     friend class EdgeInterface;
     friend class Graph;
+//    friend class VertexInterface;
 
 private :
-
+public :
     /// Les widgets de l'interface. N'oubliez pas qu'il ne suffit pas de déclarer
     /// ici un widget pour qu'il apparaisse, il faut aussi le mettre en place et
     /// le paramétrer ( voir l'implémentation du constructeur dans le .cpp )
@@ -51,18 +53,27 @@ private :
 
 
 
-    int m_idx;
+
     std::string m_thing;
-public :
+//public :
+
+    int m_idx;
+    int m_x;
+    int m_y;
 
     // Le constructeur met en place les éléments de l'interface
     // voir l'implémentation dans le .cpp
     VertexInterface(int idx, int x, int y);
+    VertexInterface();
     int getidx();
     std::string getthing()
     {
         return m_thing;
     }
+
+    void changement_de_couleur_sommet(int idx);
+    void constructeur_default();
+
 };
 
 
@@ -107,6 +118,7 @@ public:
     int idx;
     int numHydrant;
     std::string infosHydrant;
+    int reseau;
 
 
     /// Les constructeurs sont à compléter selon vos besoin...
@@ -162,7 +174,10 @@ private :
     // Un label de visualisation du poids de l'arc
     grman::WidgetText m_label_weight;
 
+    grman::WidgetEdge m_test;
+
 public :
+
 
     // Le constructeur met en place les éléments de l'interface
     // voir l'implémentation dans le .cpp
@@ -193,6 +208,10 @@ private :
 
 public:
 
+int idx;
+int id_vert1;
+int id_vert2;
+int reseau;
     /// Les constructeurs sont à compléter selon vos besoin...
     /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
     Edge (double weight=0, EdgeInterface *interface=nullptr) :
@@ -217,7 +236,7 @@ class GraphInterface
     friend class Graph;
 
 private :
-
+public :
     /// Les widgets de l'interface. N'oubliez pas qu'il ne suffit pas de déclarer
     /// ici un widget pour qu'il apparaisse, il faut aussi le mettre en place et
     /// le paramétrer ( voir l'implémentation du constructeur dans le .cpp )
@@ -259,7 +278,7 @@ private :
     // A compléter éventuellement par des widgets de décoration ou
     // d'édition (boutons ajouter/enlever ...)
 
-public :
+//public :
 
     // Le constructeur met en place les éléments de l'interface
     // voir l'implémentation dans le .cpp
@@ -277,6 +296,8 @@ class Graph
 
         /// La liste des sommets
         std::map<int, Vertex> m_vertices;
+        /// liste des sommets interfacés
+        std::map< int ,VertexInterface> m_interfacedVertices;
 
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<GraphInterface> m_interface = nullptr;
@@ -304,7 +325,7 @@ class Graph
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update(std::string nom);
-        void recuperation(std::string nom, std::string nom1, std::vector<Vertex>& mainVertices);
+        void recuperation(std::string nom, std::string nom1, std::vector<Vertex>& mainVertices, std::vector<Edge>&mainEdges);
         void recuperation_bis(std::string nom);
         void sauvegarde(std::map<int, Vertex> m_vertices, std::string nom);
         void remplissagemap(std::string path);
@@ -324,7 +345,7 @@ class Graph
     void forte_conexite();
     void sauvegarde_bis(std::map<int , Vertex>);
     void credits();
-
+    void affichage_arette(int idx, int id_vert1, int id_vert2);
 
 
 

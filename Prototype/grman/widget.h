@@ -663,7 +663,7 @@ protected :
     std::vector<ArrowItem> m_items;
 
     int m_color = ROSE;
-    int m_thickness = 3;
+    int m_thickness = 1;
 
     // Position relative des éventuels Widgets enfants le long de l'arc, 0 origine, 0.5 milieu, 1.0 destination
     double m_children_position = 0.5;

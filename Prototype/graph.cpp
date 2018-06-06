@@ -20,6 +20,36 @@ template < typename T > std::string to_string( const T& n )
 /***************************************************
                     VERTEX
 ****************************************************/
+/*/// Le constructeur par défaut
+VertexInterface::VertexInterface()
+{
+    m_idx=0;
+    m_x =0;
+    m_y=0;
+
+}
+ void VertexInterface::constructeur_default()
+ {
+
+    // La boite englobante
+    m_top_box.set_pos(m_x, m_y);
+    m_top_box.set_dim(11,11);
+    m_top_box.set_contained();
+    m_top_box.set_bg_color(BLEUCLAIR);
+
+
+    // Label de visualisation d'index du sommet dans une boite
+    m_top_box.add_child( m_box_label_idx );
+    m_box_label_idx.set_dim(12,12);
+    m_box_label_idx.set_no_gravity();
+    m_box_label_idx.set_bg_color(BLEUCLAIR);
+
+
+    m_box_label_idx.add_child( m_label_idx );
+    m_label_idx.set_message( patch::to_string(m_idx) );
+
+ }*/
+
 
 /// Le constructeur met en place les éléments de l'interface
 VertexInterface::VertexInterface(int idx, int x, int y)
@@ -160,7 +190,7 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
     m_top_edge.attach_to(to.m_interface->m_top_box);
     m_top_edge.reset_arrow_with_bullet();
 
-    // Une boite pour englober les widgets de réglage associés
+  /*  // Une boite pour englober les widgets de réglage associés
     m_top_edge.add_child(m_box_edge);
     m_box_edge.set_dim(24,60);
     m_box_edge.set_bg_color(BLANCBLEU);
@@ -173,7 +203,7 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
 
     // Label de visualisation de valeur
     m_box_edge.add_child( m_label_weight );
-    m_label_weight.set_gravity_y(grman::GravityY::Down);
+    m_label_weight.set_gravity_y(grman::GravityY::Down);*/
 
 }
 
@@ -292,7 +322,7 @@ GraphInterface::GraphInterface(int x, int y, int w, int h, std::string nom)
 }
 
 
-void Graph::recuperation(std::string nom1, std::string nom2, std::vector<Vertex>& mainVertices)
+void Graph::recuperation(std::string nom1, std::string nom2, std::vector<Vertex>& mainVertices, std::vector<Edge>&mainEdges)
 {
     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, nom2);
 
@@ -304,15 +334,22 @@ void Graph::recuperation(std::string nom1, std::string nom2, std::vector<Vertex>
     {
 
         int v1 = 0;
+        int v2 = 0;
+        int reseau;
         Vertex v;
-        unsigned int idx, x,y, numHydrant;
+        Edge e;
+        //VertexInterface vi ;
+        unsigned int idx, x,y, numHydrant, id_vert1, id_vert2 ;
         std::string infosHydrant;
 
         fichier >> v1;
+        fichier >> v2;
+
+     //  fichier >> v2;
         for(int i = 0 ; i < v1 ; i++)
 
         {
-            fichier >> idx >>x>>y>>numHydrant>>infosHydrant;
+            fichier >> idx >>x>>y>>numHydrant>>infosHydrant>>reseau;
             add_interfaced_vertex(idx, x, y);
 
             ///lien avec le main
@@ -323,6 +360,39 @@ void Graph::recuperation(std::string nom1, std::string nom2, std::vector<Vertex>
             mainVertices[i].idx=idx;
             mainVertices[i].numHydrant=numHydrant;
             mainVertices[i].infosHydrant=infosHydrant;
+            mainVertices[i].reseau=reseau;
+
+         //   vi.m_idx=idx;
+           // vi.m_x = x;
+            //vi.m_y=y;
+
+            //mainInterfacedVertices.push_back(vi);
+           // mainInterfacedVertices[i].m_idx=idx;
+            //mainInterfacedVertices[i].m_x=x;
+            //mainInterfacedVertices[i].m_y=y;
+
+        }
+
+        // fichier >> v2;
+
+         for (int i = 0 ; i < v2 ; i++)
+        {
+            fichier >> idx;
+            fichier >> id_vert1;
+            fichier >> id_vert2;
+            fichier >> reseau;
+
+            add_interfaced_edge(idx,id_vert1, id_vert2);
+
+
+
+            ///lien avec le main
+            mainEdges.push_back(e);
+            mainEdges[i].idx=idx;
+             mainEdges[i].id_vert1=id_vert1;
+              mainEdges[i].id_vert2=id_vert2;
+              mainEdges[i].reseau=reseau;
+           // affichage_arette(idx, id_vert1,id_vert2);
 
         }
     }
@@ -417,8 +487,44 @@ void Graph::add_interfaced_vertex(int idx, int x, int y )
     VertexInterface *vi = new VertexInterface(idx, x, y);
     // Ajout de la top box de l'interface de sommet
     m_interface->m_main_box.add_child(vi->m_top_box);
+    vi->m_box_label_idx.set_bg_color(VERT);
+    vi->m_top_box.set_bg_color(ROUGE);
     // On peut ajouter directement des vertices dans la map avec la notation crochet :
     m_vertices[idx] = Vertex(0, vi);
+    //m_interfacedVertices[idx]=
+}
+
+/// Aide à l'ajout d'arcs interfacés
+void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weight)
+{
+    if ( m_edges.find(idx)!=m_edges.end() )
+    {
+        std::cerr << "Error adding edge at idx=" << idx << " already used..." << std::endl;
+        throw "Error adding edge";
+    }
+
+    if ( m_vertices.find(id_vert1)==m_vertices.end() || m_vertices.find(id_vert2)==m_vertices.end() )
+    {
+        std::cerr << "Error adding edge idx=" << idx << " between vertices " << id_vert1 << " and " << id_vert2 << " not in m_vertices" << std::endl;
+        throw "Error adding edge";
+    }
+
+    EdgeInterface *ei = new EdgeInterface(m_vertices[id_vert1], m_vertices[id_vert2]);
+    //m_interface->m_main_box.add_child(ei->m_top_edge);
+    m_edges[idx] = Edge(weight, ei);
+    m_edges[idx].m_from=id_vert1;
+    m_edges[idx].m_to=id_vert2;
+    m_vertices[id_vert1].m_out.push_back(idx);
+    m_vertices[id_vert2].m_in.push_back(idx);
+}
+
+void Graph::affichage_arette(int idx, int id_vert1, int id_vert2)
+{
+    EdgeInterface *ei = new EdgeInterface(m_vertices[id_vert1], m_vertices[id_vert2]);
+    m_interface->m_main_box.add_child(ei->m_top_edge);
+
+    m_edges[idx].m_from=id_vert1;
+    m_edges[idx].m_to=id_vert2;
 }
 
 void Graph::sauvegarde(std::map<int, Vertex> m_vertices, std::string nom)
@@ -452,6 +558,56 @@ void Graph::clear_map()
 
 void Graph::credits()
 {
+    m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, "popupbis.png");
      m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600, "creditsbis.png");
 }
 
+void VertexInterface::changement_de_couleur_sommet(int idx)
+{
+    m_box_label_idx.set_bg_color(BLEUCLAIR);
+}
+
+void Graph::test_remove_edge(int eidx)
+{
+    /// référence vers le Edge à enlever
+    /// on parcourt la map jusqu'à l'endroit de l'indice rentré en paramètre de la fonction
+    Edge &remed=m_edges.at(eidx);
+
+    std::cout << "Removing edge " << eidx << " " << remed.m_from << "->" << remed.m_to << " de poid " << remed.m_weight << std::endl;
+
+    /// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+    std::cout << "AVANT : size entrant de " << remed.m_from << " : " << m_vertices[remed.m_from].m_in.size() << " : size sortant de " << remed.m_from << " : " << m_vertices[remed.m_from].m_out.size() << std::endl;
+    std::cout << "AVANT : size entrant de " << remed.m_to << " : " << m_vertices[remed.m_to].m_in.size() << " : size sortant de " << remed.m_to << " : " << m_vertices[remed.m_to].m_out.size() << std::endl;
+    std::cout << "AVANT : taille des edges a la fin : " << m_edges.size() << std::endl;
+
+    /// test : on a bien des éléments interfacés
+    if (m_interface && remed.m_interface)
+    {
+        /// Ne pas oublier qu'on a fait ça à l'ajout de l'arc :
+        // EdgeInterface *ei = new EdgeInterface(m_vertices[id_vert1], m_vertices[id_vert2]); */
+        // m_interface->m_main_box.add_child(ei->m_top_edge); */
+        // m_edges[idx] = Edge(weight, ei); */
+        /// Le new EdgeInterface ne nécessite pas de delete car on a un shared_ptr
+        /// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+        /// mais il faut bien enlever le conteneur d'interface m_top_edge de l'arc de la main_box du graphe
+        m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge );
+    }
+
+    /// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
+    /// References sur les listes de edges des sommets from et to
+    std::vector<int> &vefrom = m_vertices[remed.m_from].m_out;
+    std::vector<int> &veto = m_vertices[remed.m_to].m_in;
+    vefrom.erase( std::remove( vefrom.begin(), vefrom.end(), eidx ), vefrom.end() );
+    veto.erase( std::remove( veto.begin(), veto.end(), eidx ), veto.end() );
+
+    /// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+    /// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
+    /// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
+    m_edges.erase( eidx );
+
+    /// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+    std::cout << "APRES : size entrant de " << remed.m_from << " : " << m_vertices[remed.m_from].m_in.size() << " : size sortant de " << remed.m_from << " : " << m_vertices[remed.m_from].m_out.size() << std::endl;
+    std::cout << "APRES : size entrant de " << remed.m_to << " : " << m_vertices[remed.m_to].m_in.size() << " : size sortant de " << remed.m_to << " : " << m_vertices[remed.m_to].m_out.size() << std::endl;
+    std::cout << "APRES : taille des edges a la fin : " << m_edges.size() << std::endl;
+
+}
