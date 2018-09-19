@@ -161,41 +161,22 @@ void menu()
                         //if(mouse_b&1 && 408< mouse_x &&  mouse_x < 428 && 602< mouse_y && mouse_y < 622 && position == "space")///graphe200 +20x
                     {
                         s= mainVertices[i].infosHydrant;
-                        std::cout <<mainVertices[i].idx<<std::endl;
-                        std::cout <<mainVertices[i].numHydrant<<std::endl;
+                        std::cout <<std::endl<<"hydrant numero "<<mainVertices[i].numHydrant<<std::endl;
                         std::cout<< ecritureTerminal(s) <<std::endl;
+                        //std::cout <<mainVertices[i].posx<<" "<<mainVertices[i].posy<<std::endl;
 
                         /// cercle
 
 
-                        circlefill( screen, mainVertices[i].posx+2.5*ERREURPOS,mainVertices[i].posy+0.9*ERREURPOS, 80, VERTCLAIR);
-                        circlefill( screen, mainVertices[i].posx+2.5*ERREURPOS,mainVertices[i].posy+0.9*ERREURPOS, 50, ROUGE);
-                        circlefill( screen, mainVertices[i].posx+2.5*ERREURPOS,mainVertices[i].posy+0.9*ERREURPOS, 25, VERT);
+                     //   circlefill( screen, mainVertices[i].posx+2.5*ERREURPOS,mainVertices[i].posy+0.9*ERREURPOS, 80, VERTCLAIR);
+                       // circlefill( screen, mainVertices[i].posx+2.5*ERREURPOS,mainVertices[i].posy+0.9*ERREURPOS, 50, ROUGE);
+                        //circlefill( screen, mainVertices[i].posx+2.5*ERREURPOS,mainVertices[i].posy+0.9*ERREURPOS, 25, VERT);
 
-                        //  std::this_thread::sleep_for (std::chrono::seconds(2));//pensant 2 s
                         /// surbrillance du sommet
-//                        m_box_label_idx.set_bg_color(ROUGE);
 
-
-
-                        /*   VertexInterface *vii= new VertexInterface(mainVertices[i].idx, mainVertices[i].posx, mainVertices[i].posy);
-                           vii->m_top_box.set_pos(50, 50);
-                           vii->m_top_box.set_dim(50,50);
-                           vii->m_top_box.set_bg_color(ROSE);
-
-
-                        VertexInterface *vi = new VertexInterface(mainVertices[i].idx, mainVertices[i].posx, mainVertices[i].posy);
-                        // Ajout de la top box de l'interface de sommet
-
-
-                        vi->m_box_label_idx.set_color(BLEUCLAIR);
-                        vi->m_box_label_idx.set_bg_color(BLEUCLAIR);
-                        vi->m_top_box.set_bg_color(BLEUCLAIR);
-                        //vi->m_top_box.set_m();
-                        vi->m_box_label_idx.set_message("coucou");*/
 
                         /// arettes
-                        for (int j =0; j<mainEdges.size(); j++)
+                   /*     for (int j =0; j<mainEdges.size(); j++)
                         {
                             if (mainEdges[j].reseau=mainVertices[i].reseau)
                                 g.affichage_arette(mainEdges[j].idx, mainEdges[j].id_vert1, mainEdges[j].id_vert2);
@@ -208,7 +189,7 @@ void menu()
                             if (mainEdges[j].reseau=mainVertices[i].reseau)
                                 g.test_remove_edge(j);
                         }
-
+*/
 
 
                         ///pop up
@@ -219,43 +200,11 @@ void menu()
                                                 blit(buffer, screen, 0,0,0,0,1000,750);
 
                         */
-
-
-                        // grman::mettre_a_jour();
-
-
-                        //key[KEY_SPACE]=true;
-                        //std::cout <<"poteau 200\n"; //diametre 250
-                        //std::cout <<"diametre 200\n3 LGP\n7 LG\n7 LDV\n\n";
                     }
 
                 }
 
-                /*   if(mouse_b&1 && 408< mouse_x &&  mouse_x < 428 && 602< mouse_y && mouse_y < 622 && position == "space")///graphe200 +20x
-                 {
-                     //x=false;
-                     std::cout <<"poteau 200\n"; //diametre 250
-                     std::cout <<"diametre 200\n3 LGP\n7 LG\n7 LDV\n\n";
-                     //   blit(fond, buffer, 0,0,0,0,1000, 740);
-                     //blit(buffer, screen, 0,0,0,0,1000, 740);
-                 }
 
-                  if(mouse_b&1 && 350< mouse_x &&  mouse_x < 370 && 47< mouse_y && mouse_y < 67 && position == "space" )///graphe201 +20x
-                    {
-                        //x=false;
-                        std::cout <<"poteau 201\n"; //diametre 250
-                        std::cout <<"diametre 250\n5 LGP\n11 LG\n11 CDV\n1 vector\n\n";
-                        //   blit(fond, buffer, 0,0,0,0,1000, 740);
-                        //blit(buffer, screen, 0,0,0,0,1000, 740);
-                    }
-                    if(mouse_b&1 && 386< mouse_x &&  mouse_x < 404 && 353< mouse_y && mouse_y < 368  && position == "space")///graphe197 +20x
-                    {
-                        //x=false;
-                        std::cout <<"poteau 197\n"; //diametre 250
-                        std::cout <<"diametre 300\n8 LGP\n16 LG\n16 LDV\n2 vector\n\n";
-                        //   blit(fond, buffer, 0,0,0,0,1000, 740);
-                        //blit(buffer, screen, 0,0,0,0,1000, 740);
-                    }*/
                 ///-----------------------------------------------------------------------------------------------------------------------------------------------
                 if(key[KEY_R] )
                 {
@@ -379,7 +328,7 @@ void menu()
                 /// chanement de parcelle -----------------------------------------------------
                 if(key[KEY_SPACE] )
                 {
-                    std::cout <<"Sarcelles flanades"<<std::endl;
+                  //  std::cout <<"Sarcelles flanades"<<std::endl;
                     x= false;
                     blit(fond, buffer, 0,0,0,0,1000, 740);
                     blit(buffer, screen, 0,0,0,0,1000, 740);
@@ -390,7 +339,7 @@ void menu()
                 }
                 if(key[KEY_LEFT] )
                 {
-                    std::cout <<"Sarcelles Ouest"<<std::endl;
+                 //   std::cout <<"Sarcelles Ouest"<<std::endl;
                     x= false;
                     blit(fond, buffer, 0,0,0,0,1000, 740);
                     blit(buffer, screen, 0,0,0,0,1000, 740);
@@ -401,7 +350,7 @@ void menu()
                 }
                 if(key[KEY_RIGHT] )
                 {
-                    std::cout <<"Sarcelles Est"<<std::endl;
+                   // std::cout <<"Sarcelles Est"<<std::endl;
                     x= false;
                     blit(fond, buffer, 0,0,0,0,1000, 740);
                     blit(buffer, screen, 0,0,0,0,1000, 740);
@@ -412,7 +361,7 @@ void menu()
                 }
                 if(key[KEY_UP] )
                 {
-                    std::cout <<"Sarcelles Nord"<<std::endl;
+                  //  std::cout <<"Sarcelles Nord"<<std::endl;
                     x= false;
                     blit(fond, buffer, 0,0,0,0,1000, 740);
                     blit(buffer, screen, 0,0,0,0,1000, 740);
@@ -423,7 +372,7 @@ void menu()
                 }
                 if(key[KEY_DOWN] )
                 {
-                    std::cout <<"Sarcelles Sud"<<std::endl;
+                   // std::cout <<"Sarcelles Sud"<<std::endl;
                     x= false;
                     blit(fond, buffer, 0,0,0,0,1000, 740);
                     blit(buffer, screen, 0,0,0,0,1000, 740);
@@ -472,6 +421,7 @@ void menu()
                 position = "space";
 
 
+
                 secu = false;
                 while(!secu)
                 {
@@ -497,12 +447,13 @@ void menu()
                     std::cout<< "Utiliser 2 GL et 1 LDV"<<std::endl;
                     std::cout<< "Attention, le reseau ne supporte plus d autre vehicules"<<std::endl<<std::endl;
 
+                    std::cout<< "Suggestion 3:"<<std::endl;
                     std::cout<< "Demande de renfort CEDA"<<std::endl;
                     std::cout<< "Alimentation sur le poteau 128"<<std::endl;
                     std::cout<< "Utiliser 1 Vector, 3 GL et 3 LDV"<<std::endl;
                     std::cout<< "Le reseau peut supporter l'ensemble des moyens necessaires"<<std::endl<<std::endl;
-                    incidentX = 400;
-                    incidentY = 540;
+                    incidentX = 499;
+                    incidentY = 168;
 
                 }
                 else if (type == "magasin")
@@ -519,6 +470,7 @@ void menu()
                     std::cout<< "Utiliser 2 GL et 1 LDV"<<std::endl;
                     std::cout<< "Attention, le reseau ne supporte plus d autre vehicules"<<std::endl<<std::endl;
 
+                    std::cout<< "Suggestion 3:"<<std::endl;
                     std::cout<< "Demande de renfort CEDA"<<std::endl;
                     std::cout<< "Alimentation sur le poteau 128"<<std::endl;
                     std::cout<< "Utiliser 1 Vector, 3 GL et 3 LDV"<<std::endl;
@@ -540,12 +492,13 @@ void menu()
                     std::cout<< "Utiliser 2 GL et 1 LDV"<<std::endl;
                     std::cout<< "Attention, le reseau ne supporte plus d autre vehicules"<<std::endl<<std::endl;
 
+                    std::cout<< "Suggestion 3:"<<std::endl;
                     std::cout<< "Demande de renfort CEDA"<<std::endl;
                     std::cout<< "Alimentation sur le poteau 128"<<std::endl;
                     std::cout<< "Utiliser 1 Vector, 3 GL et 3 LDV"<<std::endl;
                     std::cout<< "Le reseau peut supporter l'ensemble des moyens necessaires"<<std::endl<<std::endl;
-                    incidentX = 400;
-                    incidentY = 540;
+                    incidentX = 490;
+                    incidentY = 236;
                 }
                 else if (type == "tour_c")
                 {
@@ -561,12 +514,13 @@ void menu()
                     std::cout<< "Utiliser 2 GL et 1 LDV"<<std::endl;
                     std::cout<< "Attention, le reseau ne supporte plus d autre vehicules"<<std::endl<<std::endl;
 
+                    std::cout<< "Suggestion 3:"<<std::endl;
                     std::cout<< "Demande de renfort CEDA"<<std::endl;
                     std::cout<< "Alimentation sur le poteau 128"<<std::endl;
                     std::cout<< "Utiliser 1 Vector, 3 GL et 3 LDV"<<std::endl;
                     std::cout<< "Le reseau peut supporter l'ensemble des moyens necessaires"<<std::endl<<std::endl;
-                    incidentX = 400;
-                    incidentY = 540;
+                    incidentX = 469;
+                    incidentY = 357;
                 }
                 else if (type == "tour_d")
                 {
@@ -582,12 +536,13 @@ void menu()
                     std::cout<< "Utiliser 2 GL et 1 LDV"<<std::endl;
                     std::cout<< "Attention, le reseau ne supporte plus d autre vehicules"<<std::endl<<std::endl;
 
+                    std::cout<< "Suggestion 3:"<<std::endl;
                     std::cout<< "Demande de renfort CEDA"<<std::endl;
                     std::cout<< "Alimentation sur le poteau 128"<<std::endl;
                     std::cout<< "Utiliser 1 Vector, 3 GL et 3 LDV"<<std::endl;
                     std::cout<< "Le reseau peut supporter l'ensemble des moyens necessaires"<<std::endl<<std::endl;
-                    incidentX = 400;
-                    incidentY = 540;
+                    incidentX = 460;
+                    incidentY = 440;
                 }
             }
             while (x == true)
@@ -616,7 +571,7 @@ void menu()
                     {
                         s= mainVertices[i].infosHydrant;
                         std::cout <<std::endl;
-                        std::cout <<mainVertices[i].numHydrant<<std::endl;
+                         std::cout <<std::endl<<"hydrant numero "<<mainVertices[i].numHydrant<<std::endl;
                         std::cout<< ecritureTerminal(s) <<std::endl;
 
                         /// surbrillance du sommet
@@ -765,7 +720,7 @@ void menu()
         }
         else  if(mouse_b&1 && 319 < mouse_x &&  mouse_x < 687 && 490< mouse_y && mouse_y < 526 )///quitter
         {
-            std::cout <<"quitter"<<std::endl;
+           // std::cout <<"quitter"<<std::endl;
             key[KEY_ESC]=true;
         }
         else  if(mouse_b&1 && 835 < mouse_x &&  mouse_x < 978 && 568< mouse_y && mouse_y < 611 )///infos complémentaires
@@ -779,7 +734,7 @@ void menu()
                 while( key[KEY_R] ==false )
                 {
 
-            std::cout <<"informations complémentaires"<<std::endl;
+          //  std::cout <<"informations complémentaires"<<std::endl;
             blit(poster, buffer, 0,0,0,0,1000, 740);
             blit(buffer, screen, 0,0,0,0,1000, 740);
                 secu=true;

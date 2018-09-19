@@ -1,5 +1,5 @@
-29
-29
+30
+30
 0 25   359 0247 diametre_200x3_LGPx7_LGx7_LDV 0
 1 50   520 0188 diametre_150x4_GL_ou_2_LGP_ou_4_LDV 15
 2 38   551 0207 diametre_200x7_GL_ou_3_LGP_ou_7_LDV 16
@@ -29,6 +29,7 @@
 26 773 114 0020 diametre_200x3_LGPx7_LGx7_LDV 0
 27 774 144 0008 diametre_200x3_LGPx7_LGx7_LDV 0
 28 940 220 0135 diametre_200x3_LGPx7_LGx7_LDV 7
+29 715 148 0128 diametre_800x120_GL_ou_60_LGP_ou_120_LDV_ou_15_Vector_6
 0  0  0  0
 1  1  1  15
 2  2  2  16
@@ -58,3 +59,4 @@
 26 26 26 0
 27 27 27 0
 28 28 28 7
+29 29 29 6

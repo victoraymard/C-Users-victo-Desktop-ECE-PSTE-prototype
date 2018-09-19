@@ -487,8 +487,8 @@ void Graph::add_interfaced_vertex(int idx, int x, int y )
     VertexInterface *vi = new VertexInterface(idx, x, y);
     // Ajout de la top box de l'interface de sommet
     m_interface->m_main_box.add_child(vi->m_top_box);
-    vi->m_box_label_idx.set_bg_color(VERT);
-    vi->m_top_box.set_bg_color(ROUGE);
+    vi->m_box_label_idx.set_bg_color(BLEUCLAIR);
+    vi->m_top_box.set_bg_color(BLEUCLAIR);
     // On peut ajouter directement des vertices dans la map avec la notation crochet :
     m_vertices[idx] = Vertex(0, vi);
     //m_interfacedVertices[idx]=
